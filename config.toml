@@ -1,0 +1,61 @@
+baseURL = "https://kdnrck.co/"
+languageCode = "en-us"
+title = "Kendrick Tan"
+theme = "hermit"
+pygmentsCodefences  = true
+pygmentsUseClasses  = true
+enableEmoji = true
+googleAnalytics = "UA-71060764-2"
+
+[blackfriday]
+    smartypants = false
+    skipHTML = true
+
+[params]
+    dateform        = "Jan 2, 2006"
+    dateformShort   = "Jan 2"
+    dateformNum     = "2006-01-02"
+    dateformNumTime = "2006-01-02"
+
+    customCSS = ["css/custom.css"]
+
+    homeSubtitle = "Software engineer who enjoys solving hard technical problems"
+    footerCopyright = ' &#183; Kendrick Tan'
+
+    [[params.social]]
+        name = "twitter"
+        url = "https://twitter.com/kendricktrh"
+
+    [[params.social]]
+        name = "github"
+        url = "https://github.com/kendricktan"
+
+    [[params.social]]
+        name = "instagram"
+        url = "https://instagram.com/mr.miso.oz"
+
+    [[params.social]]
+        name = "linkedin"
+        url = "https://www.linkedin.com/in/kendricktrh/"
+
+[menu]
+    [[menu.main]]
+        name = "About"
+        url = "about/"
+        weight = 10
+
+    [[menu.main]]
+        name = "Posts"
+        url = "posts/"
+        weight = 10
+    
+    [[menu.main]]
+        name = "Resume"
+        url = "https://goo.gl/m2EgR2"
+        weight = 10
+
+    [[menu.main]]
+        name = "Talks"
+        url = "talks/"
+        weight = 10
+    
