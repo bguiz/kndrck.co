@@ -7,9 +7,9 @@ disqus: yes
 
 ## **[Link to the boilerplate project](https://github.com/kendricktan/flaskrestful-custom-request)**
 
-Recently I've been building a RESTful microservice, one the the requirements that the microservice has is that it has [MessagePack](http://msgpack.org/index.html) support (it's like JSON but smaller). [Flask](https://flask.pocoo.org) doesn't support MessagePack by default, and the documentation on extending [Flask](https://flask.pocoo.org) for custom `Request` types was lacking at the time of this writing, and as such I've decided to write a post to serve as a guideline to whomever who's running into the same issue.
+Recently I've been building a RESTful microservice, one the the requirements that the microservice has is that it has [MessagePack](https://msgpack.org/index.html) support (it's like JSON but smaller). [Flask](https://flask.pocoo.org) doesn't support MessagePack by default, and the documentation on extending [Flask](https://flask.pocoo.org) for custom `Request` types was lacking at the time of this writing, and as such I've decided to write a post to serve as a guideline to whomever who's running into the same issue.
 
-I'll be using [Flask](https://flask.pocoo.org) and [Flask-RESTful](http://flask-restful-cn.readthedocs.io/en/0.3.4/) in this tutorial.
+I'll be using [Flask](https://flask.pocoo.org) and [Flask-RESTful](https://flask-restful-cn.readthedocs.io/en/0.3.4/) in this tutorial.
 
 ## **Extending Flask's Request Class**
 

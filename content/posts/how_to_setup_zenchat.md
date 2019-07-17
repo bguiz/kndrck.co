@@ -56,7 +56,7 @@ If you're getting "connection failed" on step 2, double check and make sure your
 
 ![img](https://i.imgur.com/CqgvWXg.png)
 
-The next page determines which address will be used to send messages, and the handle/nickname given to the address (only visible by you and defaults to 'Me'). __It costs 0.00000001 ZEN to send a message, choose an address that has some funds. If you don't have any zen, get some at [http://getzen.cash](http://getzen.cash)__.
+The next page determines which address will be used to send messages, and the handle/nickname given to the address (only visible by you and defaults to 'Me'). __It costs 0.00000001 ZEN to send a message, choose an address that has some funds. If you don't have any zen, get some at [https://getzen.cash](https://getzen.cash)__.
 
 ![img](https://i.imgur.com/HuwRRhM.png)
 

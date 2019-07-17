@@ -7,7 +7,7 @@ disqus: yes
 
 ----
 
-_Assumed Knowledge: [Convolutional Neural Networks](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/), [Variational Autoencoders](http://kvfrans.com/variational-autoencoders-explained/)_
+_Assumed Knowledge: [Convolutional Neural Networks](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/), [Variational Autoencoders](https://kvfrans.com/variational-autoencoders-explained/)_
 
 __Disclaimer: This article does not cover the mathematics behind Capsule Networks, but rather the intuition and motivation behind them.__
 
@@ -15,7 +15,7 @@ __Disclaimer: This article does not cover the mathematics behind Capsule Network
 
 ## What are Capsule Networks and why do they exist?
 
-The [Capsule Network](https://arxiv.org/abs/1710.09829) is a new type of neural network architecture conceptualized by [Geoffrey Hinton](http://www.cs.toronto.edu/~hinton/), the motivation behind Capsule Networks is to address some of the short comings of Convolutional Neural Networks (__ConvNets__), which are listed below:
+The [Capsule Network](https://arxiv.org/abs/1710.09829) is a new type of neural network architecture conceptualized by [Geoffrey Hinton](https://www.cs.toronto.edu/~hinton/), the motivation behind Capsule Networks is to address some of the short comings of Convolutional Neural Networks (__ConvNets__), which are listed below:
 
 #### Problem 1: ConvNets are Translation Invariant [^1]
 

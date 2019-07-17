@@ -343,7 +343,7 @@ https://crypto.stackexchange.com/questions/1789/why-is-rsa-encryption-key-based-
 """
 ```
 
-[^1]: [Algebra Basics - Exponents In Depth](http://www.math.com/school/subject2/lessons/S2U2L2DP.html)
+[^1]: [Algebra Basics - Exponents In Depth](https://www.math.com/school/subject2/lessons/S2U2L2DP.html)
 [^2]: [Division Theorem - Proofwiki](https://proofwiki.org/wiki/Division_Theorem)
 [^3]: [Euler's Theorem](https://en.wikipedia.org/wiki/Euler%27s_theorem)
 [^4]: [Extended Euclidean Algorithm](https://en.wikipedia.org/wiki/Extended_euclidean_algorithm)

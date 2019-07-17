@@ -5,7 +5,7 @@ author: Kendrick Tan
 disqus: yes
 ---
 
-*I've been playing around with [autoencoders](http://ufldl.stanford.edu/tutorial/unsupervised/Autoencoders/), and have been fully fascinated with the idea of using one in a cool, fun project, and so [__drawlikebobross__](https://github.com/kendricktan/drawlikebobross) was born.*
+*I've been playing around with [autoencoders](https://ufldl.stanford.edu/tutorial/unsupervised/Autoencoders/), and have been fully fascinated with the idea of using one in a cool, fun project, and so [__drawlikebobross__](https://github.com/kendricktan/drawlikebobross) was born.*
 
 ---
 
@@ -25,14 +25,14 @@ It also includes a nice little web app for you to test things out :-)
 
 ### Scrapping Data
 
-Before we start diving into anything, we first need data. Fortunately, a quick google search on *"Bob Ross Datasets"* results in this website: [twoinchbrush](http://www.twoinchbrush.com/).
+Before we start diving into anything, we first need data. Fortunately, a quick google search on *"Bob Ross Datasets"* results in this website: [twoinchbrush](https://www.twoinchbrush.com/).
 
 Whats so great about this website is that it lists all its Bob Ross images in a nice, scrapable format:
 
-	http://www.twoinchbrush.com/images/painting1.png
-	http://www.twoinchbrush.com/images/painting2.png
-	http://www.twoinchbrush.com/images/painting3.png
-	http://www.twoinchbrush.com/images/paintingN.png
+	https://www.twoinchbrush.com/images/painting1.png
+	https://www.twoinchbrush.com/images/painting2.png
+	https://www.twoinchbrush.com/images/painting3.png
+	https://www.twoinchbrush.com/images/paintingN.png
 	
 A quick and easy [shell script](https://github.com/kendricktan/drawlikebobross/blob/master/scrapper.sh) finishes the job.
 
@@ -42,17 +42,17 @@ As our challenge here is to convert color patches into Bob Ross styled drawings,
 
 ![](https://i.imgur.com/IdbIQGt.png)
 
-To minimize the training time, I've preprocessed the bulk of images into smoothen images and stored them in a [h5 format](http://www.h5py.org/). This allows me to rapidly test different neural network architectures without having to preprocessed the data during training time, which is a huge time saver.
+To minimize the training time, I've preprocessed the bulk of images into smoothen images and stored them in a [h5 format](https://www.h5py.org/). This allows me to rapidly test different neural network architectures without having to preprocessed the data during training time, which is a huge time saver.
 
 ### Neural Network Architecture
 
-The network architecture I'm using is called an _Adversarial Autoencoder_, or _aae_ for short. You can read more about them [here](http://hjweide.github.io/adversarial-autoencoders), original paper [here](https://arxiv.org/abs/1511.05644)
+The network architecture I'm using is called an _Adversarial Autoencoder_, or _aae_ for short. You can read more about them [here](https://hjweide.github.io/adversarial-autoencoders), original paper [here](https://arxiv.org/abs/1511.05644)
 
 TL;DR: _"The idea I find most fascinating in this paper is the concept of mapping the encoder’s output distribution q(z|x) to an arbitrary prior distribution p(z) using adversarial training (rather than variational inference)." - Hendrik J. Weideman_
 
 __AAE Figure__
 
-![](http://www.inference.vc/content/images/2016/01/Screen-Shot-2016-01-08-at-14-48-25.png)
+![](https://www.inference.vc/content/images/2016/01/Screen-Shot-2016-01-08-at-14-48-25.png)
 
 
 ### Feeding Data Into Our Model + Pytorch
@@ -61,7 +61,7 @@ So we want color patches coming in, and Bob Ross styled images coming out, the p
 
 ![](https://i.imgur.com/hyWoQ18.png)
 
-I've chosen to use [pytorch](http://pytorch.org) to implement the model in because I've been using it tons in my [work](http://popgun.ai), as it has a super pleasant and consistent API (_looking at you tensorflow_), and I just feel like my productivity has increase tenfolds.
+I've chosen to use [pytorch](https://pytorch.org) to implement the model in because I've been using it tons in my [work](https://popgun.ai), as it has a super pleasant and consistent API (_looking at you tensorflow_), and I just feel like my productivity has increase tenfolds.
 
 The [model pipeline](https://github.com/kendricktan/drawlikebobross/tree/master/aae) has also been abstracted into 4 components:
 

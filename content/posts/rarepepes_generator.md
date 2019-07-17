@@ -28,9 +28,9 @@ TL;DR version would be that pix2pix is able to translate an image from `domain A
 
 To translate a rough pepe sketch into a pepe, I needed some data. Luckily for me I found a decently sized [dataset of rare pepes](https://archive.org/details/PepeImgurAlbum). However, some of them were unusable as it contained too much unnecessary information:
 
-![img](http://i3.kym-cdn.com/photos/images/original/001/047/653/4df.jpg)
+![img](https://i3.kym-cdn.com/photos/images/original/001/047/653/4df.jpg)
 
-So, I wrote a [script](https://github.com/kendricktan/rarepepes/blob/master/data/clean_dataset.py) that aids my in manually cleaning up that dataset. It displays the original input image on the left, and the image with [canny edge detection](http://docs.opencv.org/trunk/da/d22/tutorial_py_canny.html) applied on the right.
+So, I wrote a [script](https://github.com/kendricktan/rarepepes/blob/master/data/clean_dataset.py) that aids my in manually cleaning up that dataset. It displays the original input image on the left, and the image with [canny edge detection](https://docs.opencv.org/trunk/da/d22/tutorial_py_canny.html) applied on the right.
 
 ![img](https://i.imgur.com/Diq9iiX.png)
 

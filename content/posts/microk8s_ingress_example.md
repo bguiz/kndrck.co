@@ -66,6 +66,6 @@ microk8s.kubectl expose deployment bar-app --type=LoadBalancer --port=8080
 
 ### 8. Testing Endpoint Out
 ```
-curl -kL http://127.0.0.1/bar
-curl -kL http://127.0.0.1/foo
+curl -kL https://127.0.0.1/bar
+curl -kL https://127.0.0.1/foo
 ```

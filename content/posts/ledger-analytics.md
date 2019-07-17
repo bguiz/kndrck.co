@@ -15,7 +15,7 @@ Sounds great, no?
 
 ## Personal Gripes with ledger-cli
 
-ledger-cli is a great tool, but because it's a CLI tool, generating interactive graphs is out of the question. There's a couple of tools out there such as [ledger-web](https://github.com/peterkeen/ledger-web), and [hledger-web](http://hledger.org/hledger-web.html). Problem is they either require too much effort to setup (requiring me to install postgres), don't provide any/enough insight to the data, or both.
+ledger-cli is a great tool, but because it's a CLI tool, generating interactive graphs is out of the question. There's a couple of tools out there such as [ledger-web](https://github.com/peterkeen/ledger-web), and [hledger-web](https://hledger.org/hledger-web.html). Problem is they either require too much effort to setup (requiring me to install postgres), don't provide any/enough insight to the data, or both.
 
 ## ledger-analytics
 
@@ -37,4 +37,4 @@ The usage preview can be seen below:
 The project has just started and is currently in alpha, so if you [find any bugs please report them](https://github.com/kendricktan/ledger-analytics/issues). Again, you can [check out the ledger-analytics project here](https://github.com/kendricktan/ledger-analytics).
 
 ## Further reading
-If you're interesting in plain text accounting, [plaintextaccounting](http://plaintextaccounting.org/) has an awesome guide on getting started.
+If you're interesting in plain text accounting, [plaintextaccounting](https://plaintextaccounting.org/) has an awesome guide on getting started.

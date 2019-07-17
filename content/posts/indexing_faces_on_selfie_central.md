@@ -128,7 +128,7 @@ See how the above face is tilted to the right? Thats baaaad. We can't have feed 
 ![img](//cdn-images-1.medium.com/max/800/1*AbEg31EgkbXSQehuNJBlWg.png)
 ##### 68 facial landmaks
 
-Dlib's super easy to use, just from looking at the [example code](http://dlib.net/face_landmark_detection.py.html), I was able to plot my own 68 facial landmarks too!
+Dlib's super easy to use, just from looking at the [example code](https://dlib.net/face_landmark_detection.py.html), I was able to plot my own 68 facial landmarks too!
 
 ![img](https://i.imgur.com/tSbx3yn.png)
 ##### 68 facial landmaks on random #selfie
@@ -182,7 +182,7 @@ Steps to index faces:
 4. Use an algorithm like KNN to find images with similar indexes
 
 
-![img](http://media.giphy.com/media/upg0i1m4DLe5q/giphy.gif)
+![img](https://media.giphy.com/media/upg0i1m4DLe5q/giphy.gif)
 
 
 ---

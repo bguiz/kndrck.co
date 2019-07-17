@@ -40,13 +40,13 @@ This guide will be building a simple Oracle that retrieves [bitcoin's total mark
 
 ## Setting up your environment and tools
 
-I'll be using the [truffle framework](http://truffleframework.com/) and [testrpc](https://github.com/ethereumjs/testrpc) for this guide. You can install them by running:
+I'll be using the [truffle framework](https://truffleframework.com/) and [testrpc](https://github.com/ethereumjs/testrpc) for this guide. You can install them by running:
 
 ```bash
 npm install -g truffle ethereumjs-testrpc
 ```
 
-I'm using [truffle](http://truffleframework.com/) because is has some really nice abstractions that allows me to interact with [web3](https://github.com/ethereum/web3.js/) (almost) hassle free. Once you've installed [truffle](http://truffleframework.com/) you can initialize a boilerplate by typing:
+I'm using [truffle](https://truffleframework.com/) because is has some really nice abstractions that allows me to interact with [web3](https://github.com/ethereum/web3.js/) (almost) hassle free. Once you've installed [truffle](https://truffleframework.com/) you can initialize a boilerplate by typing:
 
 ```bash
 mkdir oracle-cmc && cd oracle-cmc
@@ -63,7 +63,7 @@ Edit **truffle.js** (your truffle configuration file) to:
 
 ```javascript
 module.exports = {
-  // See <http://truffleframework.com/docs/advanced/configuration>
+  // See <https://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
   migrations_directory: "./migrations",
   networks: {
@@ -77,7 +77,7 @@ module.exports = {
 }
 ```
 
-This points [truffle](http://truffleframework.com/) to our local private chain ([testrpc](https://github.com/ethereumjs/testrpc)).
+This points [truffle](https://truffleframework.com/) to our local private chain ([testrpc](https://github.com/ethereumjs/testrpc)).
 
 Create four new files: `./contracts/CMCOracle.sol`, `./migrations/2_deploy_migrations.js`, `./client.js`, and `./oracle.js`. Your project folder should now look like:
 
@@ -145,7 +145,7 @@ var OracleContract = require('./build/contracts/CMCOracle.json')
 var contract = require('truffle-contract')
 
 var Web3 = require('web3');
-var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+var web3 = new Web3(new Web3.providers.HttpProvider('https://localhost:8545'));
 
 // Truffle abstraction to interact with our
 // deployed contract
@@ -194,7 +194,7 @@ var OracleContract = require('./build/contracts/CMCOracle.json')
 var contract = require('truffle-contract')
 
 var Web3 = require('web3');
-var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+var web3 = new Web3(new Web3.providers.HttpProvider('https://localhost:8545'));
 
 // Truffle abstraction to interact with our
 // deployed contract

@@ -31,7 +31,7 @@ Next up was associating each project with their relavent subreddit. There wasn't
 
 With the list of subreddits, I can now easily grab the top titles and their respective updoots via the JSON endpoint. E.g.: `reddit.com/r/ethereum/top/.json`
 
-Once that was complete I chucked the aggregated data into [TfidfVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html) which returns me an `N` dimensional matrix that describes the document. The output is then passed the output through [PCA](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) which compresses the `N` dimensional matix into 2D so we can visualize it.
+Once that was complete I chucked the aggregated data into [TfidfVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html) which returns me an `N` dimensional matrix that describes the document. The output is then passed the output through [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) which compresses the `N` dimensional matix into 2D so we can visualize it.
 
 # Analyzing the Data
 
