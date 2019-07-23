@@ -119,5 +119,5 @@ You can check out a [barebone implementation of Capsule Network here](https://gi
 
 [^1]: [CNN: Translation Equivariance and Invariance](https://aboveintelligent.com/ml-cnn-translation-equivariance-and-invariance-da12e8ab7049)
 [^2]: [The Impact of Imbalanced Training Data for Convolutional Neural Networks](https://www.kth.se/social/files/588617ebf2765401cfcc478c/PHensmanDMasko_dkand15.pdf)
-[^3]: [What is wrong with Convolutional Neural Networks?](https://youtu.be/rTawFwUvnLE)
+[^3]: [What is wrong with Convolutional Neural Networks?](https://youtu.be/rTawFwUvnLE?t=1750)
 [^4]: [Dynamic Routing Between Capsules](https://arxiv.org/pdf/1710.09829.pdf)
