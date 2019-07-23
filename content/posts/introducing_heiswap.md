@@ -11,8 +11,9 @@ I was looking for a new project to work on, stumbled on [Vitalik's HackMD post](
 
 ## Quicklinks
 
-- [Smart contract deployed on Ropsten](https://ropsten.etherscan.io/address/0xbbbf35a4485992520557ae729e21ba35aab178d7)
+- [(Latest) Smart contract deployed on Ropsten](https://ropsten.etherscan.io/address/0x8AAbE42EeCA45E040fab330fD24eA6746b832Ad2)
 - [Solidity + WebApp Source Code](https://github.com/kendricktan/heiswap-dapp)
+- [(OLD) Smart contract deployed on Ropsten](https://ropsten.etherscan.io/address/0xbbbf35a4485992520557ae729e21ba35aab178d7)
 
 # Introduction
 
