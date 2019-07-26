@@ -13,7 +13,7 @@ title = "About"
 
 ---
 
-Hi! I'm Kendrick Tan, a software engineer who enjoys solving hard technical problems. 
+Hi! I'm Kendrick Tan, a software engineer who enjoys solving hard technical problems. As of August 2019, I'm located in Bangkok, Thailand and working with OmiseGO.
 
 I'm currently focusing on the decentralized finance and privacy space within the Ethereum ecosystem.
 

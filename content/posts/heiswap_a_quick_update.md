@@ -35,6 +35,8 @@ You can either use the default relayer at `https://relayer.heiswap.exchange` or 
 ##### Relayer Withdrawal Option
 
 ## Audits
+Update: [Audit from Callisto Network is now fixed](https://github.com/kendricktan/heiswap-dapp/pull/15)
+
 [Thanks to the Ethereum Commenwealth who is currently funding the auditing of the contract.](https://github.com/ethereumcommonwealth/Auditing/issues/321)
 
 ## Consensys Grants
