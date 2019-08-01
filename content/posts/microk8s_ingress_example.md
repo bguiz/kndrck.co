@@ -26,7 +26,7 @@ microk8s.start
 
 ## 2. Install Ingress Dependent Resources
 ```bash
-microk8s.kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+microk8s.kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
 ```
 
 ## 3. Enable Ingress Addon
