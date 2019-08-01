@@ -205,7 +205,7 @@ $$
 Which can be rewritten as (re: exponential rules \\ref{eq:exponent_rule}):
 $$
 \begin{align}
-(m^{\phi(n)})^k \cdot m^k \space & mod \space n
+(m^{\phi(n)})^k \cdot m^1 \space & mod \space n
 \end{align}
 $$
 Rewriting using Euler's Theorem (\\(a^{ϕ(n)} = 1 \\ mod \\ n\\), equation \\ref{eq:eulers_theorem}\) gives us:
