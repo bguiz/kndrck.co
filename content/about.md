@@ -9,11 +9,11 @@ title = "About"
 - Backend, Frontend, Blockchain, Functional Programming, Machine Learning, DevOps
 
 ### Tools
-- AWS, GCP, Linux, Git, Vim, Nix, XMonad
+- Kubernetes, AWS, GCP, Linux, Git, Vim, Nix, XMonad
 
 ---
 
-Hi! I'm Kendrick Tan, a software engineer who enjoys solving hard technical problems. As of August 2019, I'm located in Bangkok, Thailand and working with OmiseGO.
+Hi! I'm Kendrick Tan, a software engineer who enjoys solving hard technical problems. As of August 2019, I'm working with OmiseGO remotely.
 
 I'm currently focusing on the decentralized finance and privacy space within the Ethereum ecosystem.
 
