@@ -1,6 +1,6 @@
 ---
 title: Visualizing Efficient Merkle Trees for Zero-Knowledge Proofs
-date: 2020-01-03
+date: 2020-01-08
 author: Kendrick Tan
 tags:
   - cryptography
