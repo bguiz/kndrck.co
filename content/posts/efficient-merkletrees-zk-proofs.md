@@ -120,7 +120,7 @@ Just like how we require the `path` values to update an existing tree in the mer
 
 The process of recursively hashing a supplied leaf with the `path` values can be seen in Animation 3 above, where the supplied leaf in that case is `3`, and the `path` values are the boxes outlined in yellow orange.
 
-### 4.1 Verifying Data Does Not Exists In Merkle Tree
+### 4.2 Verifying Data Does Not Exists In Merkle Tree
 ```javascript
 const { hash } = require('./utils/merkletree')
 
