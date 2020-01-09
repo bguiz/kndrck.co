@@ -66,7 +66,7 @@ for (let i = 1; i <= 7; i++) {
 {{< video src="https://giant.gfycat.com/OldfashionedNeighboringAmazontreeboa.webm" >}}
 ##### Animation 1: Merkle Tree Insertion Example
 
-Notice how in Animation 1 above, the root value always changes whenever a new leaf is inserted. In a way you can preceive the root value as a sort of 'representation' of all the leaves within the tree.
+Notice how in Animation 1 above, the top-most root value always changes whenever a new leaf is inserted. In a way you can preceive the root value as a sort of 'representation' of all the leaves within the tree.
 
 **This is an important feature where we can prove some data exists in the tree, without revealing that particular piece of data.**
 
