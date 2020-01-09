@@ -105,7 +105,7 @@ const leafIndex = 3
 const dataToVerify = bigInt(3)
 
 const [path, _] = merkleTree.getPathUpdate(leafIndex)
-const isValid = merkleTree.leafExists(3, dataToVerify, path)
+const isValid = merkleTree.leafExists(leafIndex, dataToVerify, path)
 
 console.log(`Data exists: ${isValid}`)
 // Data exists: True
@@ -131,7 +131,7 @@ const leafIndex = 3
 const dataToVerify = bigInt(102934018234802841028) 
 
 const [path, _] = merkleTree.getPathUpdate(leafIndex)
-const isValid = merkleTree.leafExists(3, dataToVerify, path)
+const isValid = merkleTree.leafExists(leafIndex, dataToVerify, path)
 
 console.log(`Data exists: ${isValid}`)
 // Data exists: False
