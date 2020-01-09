@@ -5,7 +5,6 @@ author: Kendrick Tan
 tags:
   - cryptography
   - merkle trees
-  - append-only merkle trees
   - visualization 
   - animation
 disqus: yes
@@ -53,8 +52,6 @@ const merkleTree = createMerkleTree(depth, zeroValue)
 ![merkle-tree-blank](https://i.imgur.com/ZNbI6zL.png)
 ##### Figure 2: Merkle Tree With Depth 3
 
-Note that merkle trees are append-only (i.e. you can only add, or update existing leaves, but not remove any leaves). 
-
 The `zeroValue` is the placeholder/default value of the leaves of the merkle tree and is needed as we still need to be able to compute a root value of the merkle tree regardless of how filled it is. This initialization with the default `zeroValue` can be seen in Figure 2 above.
 
 ## 2. Inserting A Leaf
@@ -66,7 +63,7 @@ for (let i = 1; i <= 7; i++) {
 }
 ```
 
-{{< video src="https://giant.gfycat.com/ThunderousDishonestBoutu.webm" >}}
+{{< video src="https://giant.gfycat.com/OldfashionedNeighboringAmazontreeboa.webm" >}}
 ##### Animation 1: Merkle Tree Insertion Example
 
 Notice how in Animation 1 above, the root value always changes whenever a new leaf is inserted. In a way you can preceive the root value as a sort of 'representation' of all the leaves within the tree.
@@ -75,7 +72,7 @@ Notice how in Animation 1 above, the root value always changes whenever a new le
 
 Note: The leaf with the green-ish outline is the latest inserted value.
 
-## 3. Updating An Existing Leaf
+## 3. Updating an Existing Leaf
 ```javascript
 const leafIndex = 1
 
@@ -95,6 +92,8 @@ More intuitively, the `path` values are the root/leaf values that don't get affe
 e.g. For leaf index `1` (which consists of value `0x1`), the `path` values are `7fff`, `2fbb8b67f32aef36e17419a299baac1b12f466a02c7984b5781089ed35a74c23`, `103566ca66f0f2dbd35ebc5f94905c71c28b9d9230d141ea5cb0f71f09580535`
 
 Given that we know the `path` values to reconstruct the tree, we can conclude the time complexity is `O(n)` (where `n` is the depth of the tree) for both the average and worse case scenario[^1].
+
+If you would like to remove some data from the merkle tree, you could simply update the index of the leaf to the `zeroValue` defined when the tree was created.
 
 ## 4. Verifying Arbitrary Data
 
