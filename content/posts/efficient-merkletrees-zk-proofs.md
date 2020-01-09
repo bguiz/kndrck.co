@@ -35,6 +35,8 @@ I personally understand the rationale behind technical implementations quicker o
 3. Update a leaf in the merkle tree
 4. Verify if some leaf exists in the merkle tree
 
+You can also play around with the tool used to create most of the visuals here at [efficient-merkle-trees.netlify.com](https://efficient-merkle-trees.netlify.com/).
+
 ## 1. Creating A Merkle Tree
 ```javascript
 const bigInt = require('big-integer')
@@ -141,6 +143,8 @@ Conversely, if we use a leaf value that does not exist in the tree and recursive
 
 # Conclusion
 By using merkle trees, we are able to construct a "compressed" representation of an arbitrary set of data that allows us to efficienty prove the existence of some data in the tree in logarithmic time (relative to the set of data, as our `path` values will always be `log2(K)` length long, where `K` is the length of the set of data, NOT the depth of the merkle tree).
+
+Again, you can also play around with the tool at [efficient-merkle-trees.netlify.com](https://efficient-merkle-trees.netlify.com/).
 
 Tl;dr: Merkle trees good, give slow computer less things to compute, make slow computer faster.
 
