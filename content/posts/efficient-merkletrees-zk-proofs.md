@@ -12,19 +12,21 @@ disqus: yes
 ---
 
 # Prelude
-I've been given a grant by the Ethereum Foundation to work on an interesting project ([MACI](https://github.com/barryWhiteHat/maci)) that ultilize zero-knowledge proofs a few months ago. The work was technically challenging and I enjoy working on it. My main issue with it was that the implementation, and technicalities behind some of the chosen data structures were pass around through word-of-mouth and even the terminology varied between people. 
+For the past few months I've been working with the Ethereum Foundation on a Minimal Anti Collusion Infrastructure ([MACI](https://github.com/barryWhiteHat/maci)) project that utilises zero knowledge proofs. Working on this project has been technically challenging and thorougly enjoyable but not without some difficulties. As the main form of communication between collaborators were through google hangouts / signal calls, there existed an issue where concepts were unable to be interpreted in the intended way they were expressed, due to pitfalls of spoken word and the varied terminology used for the same concept.
 
-The goal of this blog post is to discuss and visualize the implementation of a data structure that I've been using extensively while building the MACI project - merkle trees, and specifically a simplified version of the audited [semaphore merkle tree](https://www.npmjs.com/package/semaphore-merkle-tree).
+In an effort to express what words cannot, this blog post will visualise the implementation of merkle trees (specifically a simplified version of the [audited semaphore merkle tree](https://www.npmjs.com/package/semaphore-merkle-tree)), the primary data structure used throughout the MACI project.
 
 Note: This post assumes you understand what a hash function is.
 
 # Introduction
-The data structures ultilized when building out zero-knowledge proof applications on the blockchain has to be time efficient due to the limitations of both the zero knowledge circuit compiler(s) and blockchain VM(s).
-
-Merkle trees are great for this usecase as they can be used to verify if some data exists in the tree very efficiently, as even at worse case, time complexity is linear[^1]. Their strong data verification properties is also perfect for our use case of proving _something_ but without revealing that particular something.
 
 ![merkle-tree](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Hash_Tree.svg/1920px-Hash_Tree.svg.png)
-##### Figure 1: Merkle tree visualization, source: wikimedia
+##### Figure 1: Merkle tree visualization, source: brilliant.org[^1]
+
+The data structures ultilized when building zero-knowledge proof applications on the blockchain have to be time efficient due to the limitations of both the zero knowledge circuit compiler(s) and
+blockchain VM(s).
+
+Merkle trees, a type of data structure is great for this use case as they can be used to verify whether some data exists in the tree very efficiently, as even at worse case, time complexity is linear[^1]. Their strong data verification properties are also perfect for our need of being able to prove something without revealing what that particular something is.
 
 Figure 1 shows a merkle tree with a depth of 2, giving us 4 (2^N, where N is the depth) data blocks to store our data (a merkle tree can have an arbitrarily depth of N). As shown in the figure, each pair of data block is hashed with some arbitrary hash function recursively until we reach the final root value. This root value is significant as it represents the hashes of all previous values, and with that root value, we can use it to proof if some data exists within the tree.
 
@@ -53,7 +55,7 @@ const merkleTree = createMerkleTree(depth, zeroValue)
 
 Note that merkle trees are append-only (i.e. you can only add, or update existing leaves, but not remove any leaves). 
 
-The `zeroValue` is the placeholder/default values of the leaves of the merkle tree and is needed as we still need to be able to compute a root value of the merkle tree regardless of how filled it is. This initialization with the default `zeroValue` can be seen in Figure 2 below.
+The `zeroValue` is the placeholder/default value of the leaves of the merkle tree and is needed as we still need to be able to compute a root value of the merkle tree regardless of how filled it is. This initialization with the default `zeroValue` can be seen in Figure 2 above.
 
 ## 2. Inserting A Leaf
 ```javascript
@@ -86,17 +88,17 @@ for (let i = 2; i <= 7; i++) {
 {{< video src="https://giant.gfycat.com/RevolvingRevolvingKitty.webm" >}}
 ##### Animation 2: Merkle Tree Update Example
 
-To update an existing leaf in the merkle tree, we first need to get its `path` values, which is determined by the existing leaf's index. The `path` values are the minimal values required to reconstruct the root value.
+To update an existing leaf in the merkle tree, we first need to get its `path` values, which are determined by the existing leaf's index. The `path` values are the minimal values required to reconstruct the root value.
 
-More intuitively, the `path` values are the root/leaf values that doesn't get affected when you update the existing leaf's value, and is outlined in yellow orange in Animation 2 above.
+More intuitively, the `path` values are the root/leaf values that don't get affected when you update the existing leaf's value, and is outlined in yellow orange in Animation 2 above.
 
-i.e. For leaf index `1` (which consists of value `0x1`), the `path` values are `7fff`, `2fbb8b67f32aef36e17419a299baac1b12f466a02c7984b5781089ed35a74c23`, `103566ca66f0f2dbd35ebc5f94905c71c28b9d9230d141ea5cb0f71f09580535`
+e.g. For leaf index `1` (which consists of value `0x1`), the `path` values are `7fff`, `2fbb8b67f32aef36e17419a299baac1b12f466a02c7984b5781089ed35a74c23`, `103566ca66f0f2dbd35ebc5f94905c71c28b9d9230d141ea5cb0f71f09580535`
 
 Given that we know the `path` values to reconstruct the tree, we can conclude the time complexity is `O(n)` (where `n` is the depth of the tree) for both the average and worse case scenario[^1].
 
 ## 4. Verifying Arbitrary Data
 
-### 4.1 Verifying Data Exists In Merkle Tree
+### 4.1 Verifying Data Exists in Merkle Tree
 ```javascript
 const { hash } = require('./utils/merkletree')
 
@@ -113,16 +115,16 @@ console.log(`Data exists: ${isValid}`)
 {{< video src="https://giant.gfycat.com/SereneIdealAmmonite.webm" >}}
 ##### Animation 3: Proving Some Data Exists In Merkle Tree
 
-Just like how we require the `path` values to update an existing tree in the merkle tree, we can also use the same `path` values to recursively hash the data we want to proof exists in the tree until we obtain a final tree root. If the final obtained tree root is identical to the reference tree root, we know that the data does exist in the tree.
+Just like how we require the `path` values to update an existing tree in the merkle tree, we can also use the same `path` values to recursively hash the data we want to prove exists in the tree until we obtain a final tree root. If the final obtained tree root is identical to the reference tree root, we know that the data does exist in the tree.
 
 1. Alice and Bob both have constructed identical merkle trees.
 2. Bob wants to prove to Alice that they both have identical merkle trees.
 3. Bob provides Alice with his `path` values, merkle tree root, and the index used to obtain the `path` values.
-4. Should Alice be able use the leaf value at `index` from her merkle tree, and recursively hash with the `path` values from Bob to achieve an identical merkle tree root, then they both have an identical merkle tree.
+4. Should Alice use the leaf value at `index` from her merkle tree, and recursively hash with the `path` values from Bob to achieve an identical merkle tree root, then they both have an identical merkle tree.
 
 The process of recursively hashing a supplied leaf with the `path` values can be seen in Animation 3 above, where the supplied leaf in that case is `3`, and the `path` values are the boxes outlined in yellow orange.
 
-### 4.2 Verifying Data Does Not Exists In Merkle Tree
+### 4.2 Verifying Data Does Not Exists in Merkle Tree
 ```javascript
 const { hash } = require('./utils/merkletree')
 
@@ -146,6 +148,6 @@ By using merkle trees, we are able to construct a "compressed" representation of
 
 Again, you can also play around with the tool at [efficient-merkle-trees.netlify.com](https://efficient-merkle-trees.netlify.com/).
 
-Tl;dr: Merkle trees good, give slow computer less things to compute, make slow computer faster.
+Tl;dr: Merkle trees good, make slow compute faster.
 
 [^1]: https://brilliant.org/wiki/merkle-tree/
