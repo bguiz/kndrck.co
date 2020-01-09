@@ -138,7 +138,7 @@ console.log(`Data exists: ${isValid}`)
 ```
 
 {{< video src="https://giant.gfycat.com/CanineRewardingCod.webm" >}}
-##### Animation 3: Proving Some Data Does Not Exist In Merkle Tree
+##### Animation 4: Proving Some Data Does Not Exist In Merkle Tree
 
 Conversely, if we use a leaf value that does not exist in the tree and recursively hash it with the `path` values, we will obtain a different merkle tree root. This is shown in Animation 4 above.
 
