@@ -19,7 +19,7 @@ googleAnalytics = "UA-71060764-2"
 
     customCSS = ["css/custom.css"]
 
-    homeSubtitle = "Software engineer who enjoys solving hard technical problems"
+    homeSubtitle = "Staying curious"
     footerCopyright = ' &#183; Kendrick Tan'
 
     [[params.social]]
