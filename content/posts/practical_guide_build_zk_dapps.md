@@ -12,45 +12,40 @@ tags:
   - ethereum
 ---
 
-# Prelude
+---
 
 **[Grab the source code for the blogpost here.](https://github.com/kendricktan/hello-world-zk-dapp)**
+
+Recommended prereading:
+
+- [public-key cryptography](https://stackoverflow.com/questions/2853889/how-does-public-key-cryptography-work)
+- [snarkjs tutorial](https://github.com/iden3/circom/blob/master/TUTORIAL.md)
+- [truffle](https://www.trufflesuite.com/docs/truffle/quickstart)
+- [ethers](https://docs.ethers.io/ethers.js/html/api-contract.html#connecting-to-existing-contracts)
+
+---
+
+# Prelude
 
 For the past few months, I've been building [a couple of](https://github.com/barryWhiteHat/maci) [toy dApp projects](https://github.com/kendricktan/simple-zk-rollups) on Ethereum that ultilizes zero knowledge proofs, specifically zk-SNARKs.
 
 As there is little material out there regarding building dApps that ultilizes zero knowledge proofs, I thought I would share my experience building one in a blog post.
 
-The goal of this blog post is to act as a practical guide to help readers build their first zero knowledge dApp (i.e. no maths here sorry).
+The goal of this blog post is to act as a practical guide to help guide readers build their first zero knowledge dApp (i.e. no maths here sorry).
 
-Note: This blog post assumes that the reader has a _basic_ understanding of [public-key cryptography](https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/), and how to build, and deploy a dApp.
-
-Prereading list:
-
-- [public-key crypto](https://stackoverflow.com/questions/2853889/how-does-public-key-cryptography-work)
-- [snarkjs tutorial](https://github.com/iden3/circom/blob/master/TUTORIAL.md)
-
-Useful to know:
-
-- [truffle](https://www.trufflesuite.com/docs/truffle/quickstart)
-- [ethers](https://docs.ethers.io/ethers.js/html/api-contract.html#connecting-to-existing-contracts)
+Note: This blog post assumes that the reader has a _basic_ understanding of [public-key cryptography](https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/), and how to [deploy](https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations) and [interact](https://docs.ethers.io/ethers.js/html/api-contract.html) with smart contracts in JavaScript.
 
 # Overview
 
-A zero knowledge dApp (zk-dApp) has a user flow like so:
-
-![](https://i.imgur.com/hcrgdvE.png)
-
-##### Figure 1: Zk-dApp User Flow
-
-I personally find that I understand more about a certain thing when a concrete use case is present. As such, we will be building a zk-dApp that proves if a user belong to a certain group or not, without revealing who that particular user is.
+We will be building a zk-dApp that proves if a user belong to a certain group or not, without revealing who that particular user is.
 
 The user flow of said zk-dApp would be like so:
 
 ![](https://i.imgur.com/ZheTWPV.png)
 
-##### Figure 2: Zk-dApp Identity Verification User Flow
+##### Figure 1: Zk-dApp Identity Verification User Flow
 
-Where as the development pipeline looks something like this:
+While the development pipeline looks something like:
 
 1. Write zero knowledge circuits.
 2. Generate `solidity` library to verify the written zero knowledge circuits.
@@ -60,11 +55,14 @@ Where as the development pipeline looks something like this:
 
 ## Environment and Tooling
 
-These days, because of the advance tooling and powerful abstractions, web developers need not understand the [HTTP protocol](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview) in order to build web applications (though it might be helpful to understand the protocol to better structure and debug your application, it is not required).
+Just like how you don't need to understand the HTTP procotol to do web development these days, zero knowledge dApp development has sufficient modern tooling that allows developers who don't necessarily have the math background in cryptography (e.g. me), to build applications ultilizing zero knowledge proofs.
 
-Just like web development, zero knowledge development has reached a tipping point in the recent years where there is sufficient tooling which allows developers (who don't necessarily have the math background in cryptography, e.g. me) to build applications ultilizing zero knowledge proofs.
+My recommended programming languages/tools would be:
 
-My recommended programming languages/tools would be `JavaScript/TypeScript` as it has a very rich ecosystem and support for interacting with Ethereum, `solidity` for writing your smart contracts, `truffle` to deploy your smart contracts, and [`circom`](https://github.com/iden3/circom) for writing zero knowledge proof circuits (there's tooling to convert `circom` circuits to be `solidity` compatible).
+- `JavaScript/TypeScript` as it has a very rich ecosystem and support for Ethereum
+- `Solidity` for smart contracts due to its maturity and community
+- [`Truffle`](https://www.trufflesuite.com/docs/truffle/quickstart) to deploy your smart contracts
+- [`Circom`](https://github.com/iden3/circom) for writing zero knowledge proof circuits
 
 # Zero Knowledge Circuits
 
@@ -76,6 +74,8 @@ In pseudocode land, it will be something like:
 // Note that a private key is a scalar value (int)
 // whereas a public key is a point in space (Tuple[int, int])
 const zk_identity = (private_key, public_keys) => {
+  // derive_public_from_private is a function that
+  // returns a public key given a private key
   derived_public_key = derive_public_from_private(private_key)
   for (let pk in public_keys):
     if derived_public_key === pk:
@@ -84,13 +84,14 @@ const zk_identity = (private_key, public_keys) => {
 }
 ```
 
-We will now start writing the zero knowledge circuits using `circom`. Do read the [circom tutorial](https://github.com/iden3/circom/blob/master/TUTORIAL.md) for a better understanding of the syntax.
+We will now start writing the zero knowledge circuits using `circom`. Do read the [circom tutorial](https://github.com/iden3/circom/blob/master/TUTORIAL.md) for a better understanding of the `circom` syntax.
 
-We will first install the necessary dependencies and create the file which will house our zero knowledge circuit logic: `circuits/circuit.circom`.
+We will first install the necessary dependencies and create the project folders which will house our zero knowledge circuit logic: `circuits/circuit.circom`.
 
 ```bash
 npm install circom circomlib snarkjs websnark
 
+mkdir contracts
 mkdir circuits
 mkdir -p build/circuits
 
@@ -165,6 +166,11 @@ template ZkIdentity(groupSize) {
   // equal
   component equals[groupSize][2];
   for (var i = 0; i < groupSize; i++) {
+    // Helper component to check if two
+    // values are equal
+    // We don't want to use ===
+    // as that will fail immediately if
+    // the predicate doesn't hold true
     equals[i][0] = IsEqual();
     equals[i][1] = IsEqual();
 
@@ -258,7 +264,7 @@ After completing the [zero knowledge circuits](/posts/practical_guide_build_zk_d
 
 ##### <PROJECT_ROOT>/contracts/Verifier.sol
 
-That is the helper to verify the validity of the proof. The `verifyProof` function accepts 4 parameters, but we're only interested in the `input` parameter as it represents the public signals (i.e. input signals that are not private in `<PROJECT_ROOT>/circuits/circuit.circom`).
+That is the helper to verify the validity of the proof. The `verifyProof` function accepts 4 parameters, but we're only interested in the `input` parameter as it represents the public signals (i.e. input signals that are not private inside of template `ZkIdentity` in `<PROJECT_ROOT>/circuits/circuit.circom`).
 
 **Using the `input` parameter, we can validate against the existing set of public keys in the smart contract logic to negate [the prover generating proofs with invalid public keys](/posts/practical_guide_build_zk_dapps/#ok-but-cant-a-user-supply-a-wrong-list-of-public-keys).**
 
@@ -329,6 +335,7 @@ const zkIdentityContract // Zk-Identity contract instance
 
 const privateKey  // Private key that corresponds to one of the public key in the smart contract
 const publicKeys = [
+  [
       11588997684490517626294634429607198421449322964619894214090255452938985192043n,
       15263799208273363060537485776371352256460743310329028590780329826273136298011n
   ],
