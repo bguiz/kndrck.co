@@ -27,19 +27,19 @@ Recommended prereading:
 
 # Prelude
 
-For the past few months, I've been building [a couple of](https://github.com/barryWhiteHat/maci) [toy dApp projects](https://github.com/kendricktan/simple-zk-rollups) on Ethereum that ultilizes zero knowledge proofs, specifically zk-SNARKs.
+For the past few months, I've been building [a couple of](https://github.com/barryWhiteHat/maci) [toy dApp projects](https://github.com/kendricktan/simple-zk-rollups) on Ethereum that ultilize zero knowledge proofs, specifically zk-SNARKs.
 
 As there is little material out there regarding building dApps that ultilizes zero knowledge proofs, I thought I would share my experience building one in a blog post.
 
-The goal of this blog post is to act as a practical guide to help guide readers build their first zero knowledge dApp (i.e. no maths here sorry).
+The goal of this blog post is to act as a practical guide to help readers build their first zero knowledge dApp (i.e. no maths here sorry).
 
 Note: This blog post assumes that the reader has a _basic_ understanding of [public-key cryptography](https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/), and how to [deploy](https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations) and [interact](https://docs.ethers.io/ethers.js/html/api-contract.html) with smart contracts in JavaScript.
 
 # Overview
 
-We will be building a zk-dApp that proves if a user belong to a certain group or not, without revealing who that particular user is.
+We will be building a zk-dApp that proves if a user belongs to a certain group or not, without revealing who that particular user is.
 
-The user flow of said zk-dApp would be like so:
+The user flow of said zk-dApp might look like:
 
 ![](https://i.imgur.com/ZheTWPV.png)
 
@@ -84,7 +84,7 @@ const zk_identity = (private_key, public_keys) => {
 }
 ```
 
-We will now start writing the zero knowledge circuits using `circom`. Do read the [circom tutorial](https://github.com/iden3/circom/blob/master/TUTORIAL.md) for a better understanding of the `circom` syntax.
+We will now start writing the zero knowledge circuits using `circom`. For an overview of the `circom` syntax read the [circom tutorial](https://github.com/iden3/circom/blob/master/TUTORIAL.md).
 
 We will first install the necessary dependencies and create the project folders which will house our zero knowledge circuit logic: `circuits/circuit.circom`.
 
@@ -219,15 +219,15 @@ $(npm bin)/snarkjs generateverifier --pk build/circuits/provingKey.json --vk bui
 
 Note that we're generating our `provingKey` and `verifyingKey` with the `groth` protocol as we want to be able [to use websnark to generate the proofs as they are significantly faster than snarkjs](https://github.com/iden3/websnark#important-please-be-sure-you-run-your-setup-with---protocol-groth--websnark-only-generates-groth16-proofs).
 
-Just like that, we have written a finished our zero knowledge logic. The next section (Smart Contract Verifier), we will be looking at the generated `Verifier.sol` and how we can interact with it nicely.
+Once you've done the above, we have finished a zero knowledge logic. The next section (Smart Contract Verifier), we will be looking at the generated `Verifier.sol` and how we can interact with it nicely.
 
 Note: I've also added some faq below regarding zero knowledge circuits.
 
-## How Is Supplying The Private Key In The Circuit Safe?
+### How Is Supplying The Private Key In The Circuit Safe?
 
 Noticed we specified the `privateKey`'s signal to be a `private` one. And because of that, the generated proof will not contain any information about `private` signals, but it will about `public` ones.
 
-## Ok, But Can't A User Supply A Wrong List Of Public Keys?
+### Ok, But Can't A User Supply A Wrong List Of Public Keys?
 
 We will talk more about that in the Smart Contract Verifier section below.
 
@@ -325,7 +325,7 @@ Deploy your contracts to your preferred network before moving on.
 
 Once you have written your zero knowledge circuits and written your smart contract logic, all that is left to do is to generate the proofs and call the smart contract function `isInGroup`.
 
-Since there is a lot of boilerplate code to generate the proofs and instanciate smart contracts in JS, I will be demonstrating the pseudocode to generating the proof, and validating the proof on the smart contract side. If you would the complete version, [you can find it in this file](https://github.com/kendricktan/hello-world-zk-dapp/blob/master/packages/scripts/index.js#L97).
+Since there is a lot of boilerplate code to generate the proofs and instantiate smart contracts in JS, I will be demonstrating the pseudocode for generating the proof, and validating the proof on the smart contract side. If you would the complete version, [you can find it in this file](https://github.com/kendricktan/hello-world-zk-dapp/blob/master/packages/scripts/index.js#L97).
 
 ```javascript
 // Assuming below already exists
@@ -365,6 +365,6 @@ Once you've [converted that into JavaScript](https://github.com/kendricktan/hell
 
 # Conclusion
 
-Zero knowledge tooling has come leaps and bounds in the past 3 years. You don't need a phd in cryptography to start building zero knowledge applications these days (tho it'll help while debugging).
+Zero knowledge tooling has come very far in the past 3 years. You don't need a phd in cryptography to start building zero knowledge applications these days (tho it'll help while debugging).
 
 **Again, [you can grab the source code for the blogpost here](https://github.com/kendricktan/hello-world-zk-dapp).**
