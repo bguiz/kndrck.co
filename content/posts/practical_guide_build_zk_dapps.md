@@ -66,7 +66,7 @@ My recommended programming languages/tools would be:
 
 # Zero Knowledge Circuits
 
-Our goal here is to create a circuit which when supplied with a `private key`, and an array of `public keys`, constructs a proof if and only if the private key corresponds to one of the public keys (i.e it will fail if the `private key` does not correspond to one of the `public keys` as the contraint fails and no proof can be generated).
+Our goal here is to create a circuit which when supplied with a `private key`, and an array of `public keys`, constructs a proof if and only if the private key corresponds to one of the public keys (i.e. it will fail if the `private key` does not correspond to one of the `public keys` as the constraint fails and no proof can be generated).
 
 In pseudocode land, it will be something like:
 
@@ -133,7 +133,7 @@ template PublicKey() {
 
 ##### <PROJECT_ROOT>/circuits/circuit.circom
 
-What the `PublicKey` template does is it derives the public key (`out`) from the supplied private key (`in`) on the [babyJubJub curve](https://iden3-docs.readthedocs.io/en/latest/iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/baby-jubjub.html) (i.e. its the `derive_public_from_private` function from the pseudocode above).
+What the `PublicKey` template does is it derives the public key (`out`) from the supplied private key (`in`) on the [babyJubJub curve](https://iden3-docs.readthedocs.io/en/latest/iden3_repos/research/publications/zkproof-standards-workshop-2/baby-jubjub/baby-jubjub.html) (i.e. it's the `derive_public_from_private` function from the pseudocode above).
 
 Once we have the building blocks, we can now construct the main logic for our zero knowledge circuit: verifying if the user is within a group or not:
 
@@ -325,7 +325,7 @@ Deploy your contracts to your preferred network before moving on.
 
 Once you have written your zero knowledge circuits and written your smart contract logic, all that is left to do is to generate the proofs and call the smart contract function `isInGroup`.
 
-Since there is a lot of boilerplate code to generate the proofs and instantiate smart contracts in JS, I will be demonstrating the pseudocode for generating the proof, and validating the proof on the smart contract side. If you would the complete version, [you can find it in this file](https://github.com/kendricktan/hello-world-zk-dapp/blob/master/packages/scripts/index.js#L97).
+Since there is a lot of boilerplate code to generate the proofs and instantiate smart contracts in JS, I will be demonstrating the pseudocode for generating the proof, and validating the proof on the smart contract side. If you want the complete version, [you can find it in this file](https://github.com/kendricktan/hello-world-zk-dapp/blob/master/packages/scripts/index.js#L97).
 
 ```javascript
 // Assuming below already exists
